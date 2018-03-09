@@ -36,8 +36,10 @@ function ShowEditor(filename) {
         document.getElementById('codeview').style.display = 'block';
         document.getElementById('explorer').style.display = 'none';
 
-        OpenFile(filename);
-        Focus();
+        window.setTimeout(function () {
+                OpenFile(filename);
+                Focus();
+        }, 0)
 }
 
 function getfiles() {
@@ -99,8 +101,8 @@ function OpenFile(params) {
                 if (text) {
                         editor.doc.setValue(text);
                         openedFile = name;
-                        window.location.hash = '#' + openedFile;
                         document.title = 'Vim - ' + openedFile;
+                        window.location.hash = '#' + openedFile;
                         return true;
                 }
         }
@@ -163,4 +165,6 @@ CodeMirror.on(editor, 'vim-command-done', function (e) {
         keys = '';
 });
 
-OpenFile(window.location.hash.slice(1));
+window.addEventListener('load', function () {
+        OpenFile(window.location.hash.slice(1));
+}, false)
