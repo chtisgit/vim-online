@@ -18,17 +18,25 @@
 	<style type="text/css">
 		.CodeMirror {
 			border: 1px solid #eee;
-			height: calc(100% - 20px);
+			width: 100%;
+			height: 100%;
 		}
 
 		body,
-		html,
-		.editor {
+		html {
 			display: block;
 			margin: 0px;
 			overflow: hidden;
 			width: 100%;
 			height: 100%;
+		}
+
+		.editor {
+			display: block;
+			margin: 0px;
+			overflow: hidden;
+			height: calc(100% - 90px);
+			width: calc(100% - 20px);
 		}
 
 		#explorer {
@@ -109,8 +117,10 @@
 </head>
 
 <body>
+	<div style="height:60px;overflow:hidden;padding:0px;margin:0px;">
+		<h2 id="t"></h2>
+	</div>
 	<div id="explorer">
-		<h2>File explorer</h2>
 		<ul>
 			<li>
 				<a href="#" id="newfile" onclick="ShowEditor()">New File</a>
@@ -128,6 +138,8 @@
 	<div id="snackbar"></div>
 
 	<script src="./storage.js "></script>
+	<script src="./ui.js "></script>
+	<script src="LZMA-JS/src/lzma_worker.js"></script>
 </body>
 
 </html>
